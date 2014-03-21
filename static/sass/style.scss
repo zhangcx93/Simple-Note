@@ -1,0 +1,125 @@
+html {
+  background-color: #E8E8E8;
+  margin-bottom: 50px;
+}
+.clear{
+  clear: both;
+}
+
+.notes {
+  width: 600px;
+  margin: 0 auto;
+}
+.new-note {
+  margin-top: 30px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px #D5D5D5;
+  background-color: white;
+  .edit-note {
+    &.focus {
+      textarea {
+        min-height: 4em;
+      }
+      .edit-note-title {
+        display: block;
+      }
+      .edit-note-button {
+        display: block;
+      }
+    }
+    .edit-note-title {
+      display: none;
+    }
+    .edit-note-button {
+      display: none;
+    }
+  }
+}
+.edit-note {
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  .edit-note-title {
+    display: block;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 20px;
+    border: 0;
+    line-height: 2em;
+    height: 2em;
+    width: 560px;
+    padding: 0;
+  }
+  textarea {
+    background-color: transparent;
+    display: block;
+    overflow: hidden;
+    overflow-y: hidden;
+    word-wrap: break-word;
+    outline: none;
+    resize: none;
+    margin: 10px 20px;
+    border: 0;
+    line-height: 2em;
+    height: 2em;
+    display: block; 
+    width: 560px;
+    font-size: 14px;
+    padding: 0;
+  }
+  .edit-note-button {
+    outline: none;
+    color: #444444;
+    float: right;
+    font-size: 0.6em;
+    padding: 0.4em 2em;
+    margin-bottom: 10px;
+    margin-right: 10px; 
+    background-color: #F3F3F3;
+    border: 1px solid #D8D8D8;
+    border-radius: 2px;
+  }
+}
+
+.note-wrap{
+  overflow: hidden;
+  background-color: white;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 2px;
+  .note-title, .note-content {
+    display: block;
+    outline: none;
+    resize: none;
+    margin: 10px 20px;
+    border: 0;
+    line-height: 2em;
+  }
+  .note-title {
+    font-size: 16px;
+    font-weight: bold;
+    height: 2em;
+  }
+  .note-content {
+    font-size: 14px;
+  }
+  .note-date {
+    font-size: 12px;
+    color: #9F9F9F;
+    float: left;
+    margin: 10px 0 0 20px;
+  }
+}
+
+.archive-button {
+  outline: none;
+  color: #444444;
+  float: right;
+  font-size: 0.6em;
+  padding: 0.4em 2em;
+  margin-top: 10px;
+  background-color: #F3F3F3;
+  border: 1px solid #D8D8D8;
+  border-radius: 2px;
+}

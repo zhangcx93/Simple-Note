@@ -1,0 +1,37 @@
+<div class="notes">
+  <div class="new-note">
+    <div class="edit-note"  ng-class="{focus: focus}">
+      <input type="text" ng-blur="add($event)" ng-model="newNote.title" class="edit-note-title" placeholder="标题">
+      <textarea type="text" ng-blur="add($event)" ng-focus="this.focus = true" ng-model="newNote.content" placeholder="记事" ng-auto-expand ></textarea>
+      <button ng-click="add()" class="edit-note-button">完成</button>
+      <button ng-click="cancel()" class="edit-note-button">取消</button>
+
+    </div>
+  </div>
+
+
+  <button class="archive-button" ng-click="toggleArchive()">{{ showArchive ? "现有的记事" : "归档的记事" }}</button>
+  <div class="clear"></div>
+
+  <span class="no-notes" ng-show="!notes.length">请添加记事</span>
+  <div ng-repeat="note in notes | orderBy:'-date'">
+    <div class="note-wrap edit-note">
+      <div ng-hide="editStatus">
+        <div class="note-title" ng-show="note.title" ng-click="editStatus = 'title'">
+          {{ note.title }}
+        </div>
+        <div class="note-content" ng-click="editStatus = 'content'" ng-bind-html="note.content | newlines"></div>
+        <div class="note-date">{{ dateQuery(note.date) }}</div>
+        <button ng-click="remove(note)" class="edit-note-button">删除</button>
+        <button ng-click="archieve(note)" class="edit-note-button">{{ note.archieved ? "还原" : "归档" }}</button>
+      </div>
+      <div ng-show="editStatus">
+        <input type="text" ng-model="note.title" ng-change="changed = true" ng-blur="edit($event)" ng-focusme="editStatus" class="edit-note-title" placeholder="标题">
+        <textarea type="text" ng-blur="edit($event)" ng-change="changed = true" ng-auto-expand ng-focusme="editStatus" ng-bind="note.content" ng-model="note.content" class="edit-note-content">{{ note.content }}</textarea>
+        <button ng-click="edit()" class="edit-note-button">完成</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
