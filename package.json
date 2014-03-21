@@ -1,6 +1,6 @@
 {
-  "name": "Node-MVC",
-  "description": "Johnny learns to rock",
+  "name": "Simple Note",
+  "description": "A simple note app built with MongoDB, Express, Angular, NodeJS. ",
   "version": "0.1.0",
   "homepage": "",
   "author": {
@@ -9,15 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "no"
-  },
-  "bugs": {
-    "url": ""
+    "url": "https://github.com/zhangcx93/Simple-Note"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "/blob/master/LICENSE-MIT"
+      "url": "./LICENSE-MIT"
     }
   ],
   "main": "app.js",
@@ -35,7 +32,8 @@
     "connect": "^2.14.2",
     "express": "^3.4.8",
     "ejs": "^0.8.5",
-    "grunt-contrib-compass": "^0.7.2"
+    "grunt-contrib-compass": "^0.7.2",
+    "node-restful": "~0.1.16"
   },
   "keywords": []
 }
