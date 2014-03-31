@@ -7,13 +7,16 @@ var nodeAppCtrl = angular.module('nodeAppCtrl', []);
 nodeAppCtrl.controller('noteCtrl', ['$scope', "Api",
   function ($scope, Api) {
     var reload = function () {
-      $scope.notes = Api.Note.query({
-        archieved: $scope.showArchive
-      });
+      $scope.$digest();
+      // $scope.notes = Api.Note.query({
+      //   archieved: $scope.showArchive
+      // });
     }
     $scope.showArchive = false;
     $scope.newNote = {};
-    reload();
+    $scope.notes = Api.Note.query({
+      archieved: $scope.showArchive
+    });
     $scope.add = function ($event) {
       if ($event && $event.relatedTarget) {
         return;
@@ -26,7 +29,7 @@ nodeAppCtrl.controller('noteCtrl', ['$scope', "Api",
       newNote.title = $scope.newNote.title;
       newNote.content = $scope.newNote.content;
       newNote.$save();
-      reload();
+      $scope.notes.unshift(newNote);
       $scope.newNote = "";
       $scope.focus = false;
     };
@@ -37,8 +40,8 @@ nodeAppCtrl.controller('noteCtrl', ['$scope', "Api",
     };
     $scope.archieve = function (note) {
       note.archieved = !note.archieved;
+      $scope.notes.splice($scope.notes.indexOf(note), 1);
       note.$update();
-      reload();
     };
     $scope.edit = function ($event) {
       if ($event && $event.relatedTarget) {
@@ -49,13 +52,13 @@ nodeAppCtrl.controller('noteCtrl', ['$scope', "Api",
       if (that.changed == true) {
         that.note.date = new Date();
         that.note.$update();
-        reload();
       }
       that.changed = false;
     };
     $scope.remove = function (note) {
       note.$delete();
-      reload();
+      $scope.notes.splice($scope.notes.indexOf(note), 1);
+      // reload();
     };
     $scope.toggleArchive = function () {
       $scope.showArchive = $scope.showArchive ? false : true;
